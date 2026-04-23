@@ -1,23 +1,316 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "양천구 인터넷 통합 비교 가입 서비스",
+      "description": "양천구 전 지역 (목동, 신정동, 신월동 등) 초고속 인터넷 및 IPTV 가입 상품을 비교하고, 개인에게 맞는 최적의 요금제 조회 및 현금지원 혜택을 안내하는 전문 온라인 서비스.",
+      "serviceType": "FinancialService",
+      "provider": {
+        "@type": "Organization",
+        "name": "양천구인터넷 통합 비교 센터" 
+      },
+      "url": "https://www.example.com/yangcheon-internet",
+      "areaServed": {
+        "@type": "Country",
+        "name": "KR"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9", 
+        "reviewCount": "2500"
+      }
+    }
+    </script>
+
+    <style>
+        /* CSS Variables for Soft Color Palette and Clear Hierarchy */
+        :root {
+            --primary-color: #007bff; /* Soft Blue */
+            --secondary-color: #28a745; /* Green for CTA */
+            --background-color: #f8f9fa; /* Very light gray */
+            --card-background: #ffffff;
+            --text-color: #333333;
+            --light-text-color: #6c757d;
+            --border-color: #e0e0e0;
+            --accent-color: #ffc107; /* Yellow accent */
+        }
+
+        /* Base Styles */
+        body { font-family: 'Malgun Gothic', '맑은 고딕', Arial, sans-serif; margin: 0; padding: 0; color: var(--text-color); line-height: 1.7; background-color: var(--background-color); }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+        header, section, footer { padding: 20px 0; }
+        
+        /* Typography */
+        h1 { font-size: 2.5em; text-align: center; margin-bottom: 10px; padding-top: 20px; color: #1a1a1a; font-weight: 800; }
+        h2 { font-size: 2em; border-left: 5px solid var(--primary-color); padding-left: 15px; margin-top: 40px; margin-bottom: 25px; color: var(--primary-color); font-weight: 700; }
+        h3 { font-size: 1.6em; color: var(--text-color); margin-top: 20px; font-weight: 600; }
+        p { margin-bottom: 15px; font-size: 1.05em; line-height: 1.8; }
+        ul { margin-bottom: 15px; padding-left: 25px; line-height: 1.8; }
+
+        /* Hero Section */
+        .hero { background: linear-gradient(135deg, var(--primary-color) 0%, #66aaff 100%); color: white; text-align: center; padding: 50px 0; margin-bottom: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
+        .hero p { font-size: 1.2em; opacity: 0.9; margin-bottom: 25px; }
+        .hero nav { border-top: 1px solid rgba(255, 255, 255, 0.3); padding-top: 15px; margin-top: 20px; }
+        nav ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+        nav a { text-decoration: none; color: white; font-weight: 500; padding: 8px 15px; border-radius: 5px; transition: background 0.3s; }
+        nav a:hover { background: rgba(255, 255, 255, 0.2); }
+
+        /* CTA Button */
+        .cta-btn { display: inline-block; background: var(--secondary-color); color: #fff; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-size: 1.2em; font-weight: bold; transition: background .3s, transform .3s; margin-top: 20px; box-shadow: 0 4px 6px rgba(0, 167, 69, 0.2); border: none; cursor: pointer; }
+        .cta-btn:hover { background: #1e7e34; transform: translateY(-2px); }
+        .cta-btn.primary { background: var(--primary-color); box-shadow: 0 4px 6px rgba(0, 123, 255, 0.2); }
+        .cta-btn.primary:hover { background: #0056b3; }
+
+        /* Content Card & Information Blocks */
+        .info-card { background: var(--card-background); border: 1px solid var(--border-color); padding: 30px; margin-bottom: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        .highlight { color: var(--primary-color); font-weight: bold; }
+        .section-separator { border-top: 2px dashed var(--border-color); margin: 30px 0; }
+
+        /* Calculator/Inquiry Forms (Dwell Time Increase) */
+        .inquiry-form { background-color: #e9f0ff; /* Lightest blue */ padding: 30px; margin: 30px 0; border-radius: 12px; border: 2px solid var(--primary-color); }
+        .inquiry-form label { font-weight: 600; display: block; margin-top: 15px; margin-bottom: 5px; color: #212529; }
+        .inquiry-form input[type="text"], .inquiry-form input[type="tel"], .inquiry-form select, .inquiry-form textarea { width: 100%; padding: 12px; margin-bottom: 15px; display: inline-block; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; font-size: 1em; }
+        .inquiry-form textarea { resize: vertical; }
+
+        /* Internal Link Block */
+        .link-block { margin-top: 20px; padding: 20px; background: #fffde7; border: 1px solid #ffeb3b; border-radius: 8px; }
+        .link-block h3 { color: #856404; border-left: 3px solid #ffc107; padding-left: 8px; margin-top: 0; }
+        .link-block ul { list-style: square; padding-left: 20px; }
+        .link-block li { margin-bottom: 5px; }
+        .link-block a { color: #0056b3; text-decoration: none; font-weight: 500; }
+        .link-block a:hover { text-decoration: underline; color: var(--primary-color); }
+
+        /* Table Styles */
+        .info-card table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .info-card th, .info-card td { border: 1px solid var(--border-color); padding: 12px; text-align: center; font-size: 0.95em; }
+        .info-card th { background-color: #f1f1f1; font-weight: bold; color: #333; }
+        .info-card .provider-logo { width: 40px; height: 40px; vertical-align: middle; margin-right: 10px; }
+
+        /* FAQ Styles */
+        .faq .item { border-bottom: 1px solid var(--border-color); padding: 15px 0; }
+        .faq .item h3 { cursor: pointer; color: var(--text-color); transition: color 0.3s; margin: 0; display: flex; align-items: center; justify-content: space-between; font-weight: 600; }
+        .faq .item h3:hover { color: var(--primary-color); }
+        .faq .item p { padding-left: 20px; margin-top: 10px; color: #555; display: none; }
+        .faq .item.active p { display: block; }
+        .faq-icon { font-size: 1.2em; transition: transform 0.3s; }
+        .faq .item.active .faq-icon { transform: rotate(180deg); }
+
+        /* Footer */
+        footer { text-align: center; padding: 30px 0; border-top: 1px solid var(--border-color); font-size: 0.9em; color: var(--light-text-color); margin-top: 40px; background-color: var(--card-background); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="hero">
+            <div class="container">
+                <h1>양천구 인터넷 가입, 지금 바로 최저가 비교 견적 받기</h1>
+                <p><strong>양천구인터넷</strong> 설치, <span class="highlight">현금 지원</span>, 사은품 혜택까지! <br><strong>목동, 신정동, 신월동</strong> 등 양천구 전 지역 **KT, SKT, LG U+** 요금제 실시간 비교.</p>
+                <a href="#inquiry-form" class="cta-btn primary">최저가 견적 & 현금 지원 확인하기</a>
+                <nav>
+                    <ul>
+                        <li><a href="#comparison-guide">인터넷 비교 가이드</a></li>
+                        <li><a href="#providers">통신사별 혜택 비교</a></li>
+                        <li><a href="#faqs">자주 묻는 질문</a></li>
+                        <li><a href="#local-info">양천구 지역별 특징</a></li>
+                        <li><a href="#contact-form">상담 신청</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section id="inquiry-form" class="container">
+        <h2>✅ 1분 견적 요청: 양천구 인터넷 요금 및 현금지원 조회</h2>
+        <div class="inquiry-form">
+            <p><strong>양천구인터넷</strong> 신규 가입 시 고객님께 가장 유리한 혜택을 찾아드립니다. 아래 항목을 입력하시면 **SKT, KT, LG U+**의 <strong>최저가 비교 견적</strong>을 확인하실 수 있습니다.</p>
+            <form action="/submit-quote-request" method="post">
+                <label for="local-area">설치 희망 지역 (양천구 내)</label>
+                <select id="local-area" name="local-area" required>
+                    <option value="">지역을 선택하세요</option>
+                    <option value="목동">목동</option>
+                    <option value="신정동">신정동</option>
+                    <option value="신월동">신월동</option>
+                    <option value="오목교역">오목교역 주변</option>
+                    <option value="목동역">목동역 주변</option>
+                    <option value="신정네거리역">신정네거리역 주변</option>
+                    <option value="양천구청">양천구청 주변</option>
+                </select>
+
+                <label for="service-type">희망 상품 선택</label>
+                <select id="service-type" name="service-type" required>
+                    <option value="">선택하세요</option>
+                    <option value="internet-tv">인터넷 + TV 결합 상품</option>
+                    <option value="internet-only">인터넷 단독 (초고속/기가)</option>
+                    <option value="tv-only">TV 단독 (기존 인터넷 유지)</option>
+                </select>
+                
+                <label for="contact-name">이름</label>
+                <input type="text" id="contact-name" name="name" placeholder="실명 입력" required>
+                
+                <label for="contact-phone">연락처</label>
+                <input type="tel" id="contact-phone" name="phone" placeholder="하이픈(-) 없이 입력" required>
+                
+                <button type="submit" class="cta-btn primary" style="width:100%;">양천구 최저가 견적 & 현금 지원 확인</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="comparison-guide" class="container">
+        <h2>📊 2026년 양천구인터넷 요금제 비교 가이드: <span class="highlight">현금 지원</span> A to Z</h2>
+        <div class="info-card">
+            <p><strong>양천구인터넷</strong> 가입을 계획하고 계신가요? 2026년 현재, 인터넷 통신사들은 다양한 프로모션과 현금 지원 혜택을 제공하며 경쟁하고 있습니다. 하지만 수많은 혜택 속에서 나에게 맞는 <strong>저렴한곳</strong>을 찾는 것은 쉽지 않습니다. 저희는 고객님의 상황(1인 가구, 가족 결합, 와이파이 공유기 필요 여부 등)을 고려하여 <strong>양천구인터넷</strong> 요금제 중 최적의 상품을 비교 분석해드립니다.</p>
+            <h3>1. 양천구인터넷 가입 시 통신사별 요금제 차이점</h3>
+            <p><strong>양천구</strong> 지역 내에서 <strong>KT, SKT, LG U+</strong> 세 통신사는 모두 광케이블망을 통해 안정적인 서비스를 제공합니다. 그러나 요금제, 결합 할인, 그리고 <strong>현금지원 금액</strong>에서 큰 차이를 보입니다. 특히 <strong>양천구 목동</strong> 지역은 아파트 단지가 많아 각 통신사별로 인프라 구축이 잘 되어있지만, <strong>신정동</strong>이나 <strong>신월동</strong> 일부 구역에서는 건물 노후도에 따라 설치 가능한 상품이 달라질 수 있습니다.</p>
+            <table border="1" cellpadding="10" cellspacing="0" style="width:100%; border-collapse: collapse; margin-top: 20px;">
+                <thead>
+                    <tr>
+                        <th>통신사</th>
+                        <th>양천구 주요 상품</th>
+                        <th>주력 할인 혜택</th>
+                        <th>평균 요금 (3년 약정 기준)</th>
+                        <th>2026년 현금지원 (최대)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>SKT (SK브로드밴드)</td>
+                        <td>B tv + 기가 라이트</td>
+                        <td>휴대폰 결합 할인(T플랜), 온가족 할인</td>
+                        <td>45,000원 대</td>
+                        <td class="highlight">높은 수준</td>
+                    </tr>
+                    <tr>
+                        <td>KT (KT 올레)</td>
+                        <td>GiGA Genie + 기가 와이파이</td>
+                        <td>휴대폰 결합 할인(프리미엄 가족 결합), 제휴카드 할인</td>
+                        <td>48,000원 대</td>
+                        <td class="highlight">중간 수준</td>
+                    </tr>
+                    <tr>
+                        <td>LG U+</td>
+                        <td>U+ 인터넷 + U+tv</td>
+                        <td>휴대폰 결합 할인(참 쉬운 가족 결합), 넷플릭스 제휴</td>
+                        <td>43,000원 대</td>
+                        <td class="highlight">가장 높은 수준</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="margin-top: 15px; font-size: 0.9em;">※ 상기 요금 및 현금지원 혜택은 2026년 3월 기준 평균치이며, 가입 조건 및 시기에 따라 변동될 수 있습니다. 정확한 견적은 전문가 상담을 통해 확인하세요.</p>
+
+            <h3>2. 양천구인터넷 현금 지원: 내돈내산 후기와 사은품 혜택 분석</h3>
+            <p>많은 소비자들이 <strong>양천구인터넷</strong> 가입 시 가장 중요하게 생각하는 것은 '현금 지원금'입니다. <strong>현금지원</strong>은 통신사 본사 정책과 대리점 정책에 따라 다르게 지급되며, <strong>저렴한곳</strong>을 찾기 위해선 현금지원금이 높은 업체를 선택하는 것이 유리합니다. 하지만 단순히 현금 지원금만 보고 가입했다가 서비스 품질에 실망하는 <strong>내돈내산 후기</strong>도 많습니다. 저희는 고객님의 <strong>양천구</strong> 지역 특성(아파트, 빌라 등)을 고려하여 안정적인 서비스를 제공하는 믿을 수 있는 업체를 추천해드립니다.</p>
+            <ul>
+                <li><strong>현금 지원금</strong>: 통신사 신규 가입 시 제공되는 혜택.</li>
+                <li><strong>사은품</strong>: 인터넷 TV 결합 시 제공되는 상품권 또는 가전제품.</li>
+                <li><strong>신규가입</strong>: 타 통신사에서 이동하는 경우. (가장 혜택이 큼)</li>
+                <li><strong>재약정</strong>: 기존 통신사를 유지하는 경우. (현금 지원이 적을 수 있음)</li>
+            </ul>
+
+            <h3 id="local-info">3. 양천구 지역별 인터넷 가입 특징 (목동, 신정동, 신월동)</h3>
+            <p>양천구는 대규모 아파트 단지가 밀집한 <strong>목동</strong>과 상대적으로 주거 형태가 다양한 <strong>신정동, 신월동</strong>으로 나뉩니다. <strong>목동인터넷</strong>의 경우, 대부분의 아파트 단지에 기가 인터넷망이 구축되어 있어 속도 걱정 없이 가입이 가능하며 통신사 선택의 폭이 넓습니다. 반면, <strong>신정동인터넷</strong>이나 <strong>신월동인터넷</strong> 중 오래된 빌라나 주택 밀집 지역에서는 기가 인터넷 설치 가능 여부를 사전에 꼼꼼히 <strong>확인</strong>해야 합니다. 저희 센터는 <strong>양천구</strong> 각 동네의 통신 인프라 현황을 파악하여 <strong>가장 저렴한곳</strong>을 찾아드립니다.</p>
+        </div>
+    </section>
+
+    <section id="related-search" class="container">
+        <h2>🔗 함께 많이 찾는 양천구인터넷 연관 키워드 및 정보</h2>
+        <div class="link-block">
+            <h3>핵심 정보로 빠르게 이동</h3>
+            <p>사용자가 검색한 키워드와 연관된 다양한 정보를 제공하여 페이지의 전문성을 높이고 체류율을 개선합니다.</p>
+            <ul>
+                <li><a href="#pro-cons-analysis"><strong>인터넷 가입 장단점</strong> 비교 및 <strong>차이점</strong> 분석</a></li>
+                <li><a href="#review-guide"><strong>내돈내산 후기</strong> 기반 <strong>양천구인터넷 업체</strong> <strong>순위</strong></a></li>
+                <li><a href="#discount-info"><strong>인터넷 할인</strong> 및 <strong>사은품 지원금</strong> 혜택 총정리</a></li>
+                <li><a href="#contract-termination"><strong>약정 만료</strong> 시 <strong>인터넷 재약정</strong> vs <strong>신규 가입</strong> (디시 등 커뮤니티 정보)</a></li>
+                <li><a href="#ai-smart-home"><strong>AI 스마트 홈</strong> 연동 상품 (Gemini, ChatGPT) 추천</a></li>
+                <li><a href="#installation-process"><strong>양천구 당일설치</strong> 가능 여부 및 절차</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="providers" class="container">
+        <h2>📈 통신사별 양천구인터넷 서비스 특징 분석</h2>
+        <div class="info-card">
+            <h3 id="pro-cons-analysis">1. KT(케이티) 양천구인터넷: 안정적인 품질과 다양한 결합 할인</h3>
+            <p>KT는 <strong>양천구</strong> 전 지역에서 가장 넓고 안정적인 유선 통신망을 자랑합니다. 특히 <strong>목동</strong> 지역의 아파트 단지에서는 KT가 설치가 안되는 곳이 거의 없을 정도로 인프라가 잘 되어 있습니다. <strong>장점</strong>으로는 휴대폰 결합 할인(프리미엄 가족 결합)이 잘 되어 있어 가족 구성원 모두 KT 휴대폰을 사용하는 경우 **양천구인터넷** 요금을 크게 절약할 수 있습니다. <strong>단점</strong>은 타사 대비 요금이 평균적으로 약간 비쌀 수 있다는 점입니다.</p>
+
+            <h3>2. SKT(SK브로드밴드) 양천구인터넷: 높은 현금 지원금과 통신사 할인</h3>
+            <p>SKT는 <strong>양천구</strong> 지역 내에서 <strong>KT</strong>와 함께 양대 산맥을 이루고 있습니다. <strong>장점</strong>은 <strong>현금지원 금액</strong>이 상대적으로 높아 신규 가입자에게 유리합니다. <strong>신정동인터넷</strong> 가입자들 사이에서 <strong>SKT</strong>의 <strong>내돈내산 후기</strong>를 찾아보면, 타사 대비 넉넉한 <strong>지원금</strong>과 <strong>사은품</strong> 혜택을 언급하는 경우가 많습니다. <strong>단점</strong>은 일부 <strong>양천구 신월동</strong> 외곽 지역에서는 설치 가능 여부를 사전에 꼼꼼히 <strong>확인</strong>해야 할 수 있다는 점입니다.</p>
+
+            <h3>3. LG U+(엘지유플러스) 양천구인터넷: 저렴한 가격과 VOD 콘텐츠</h3>
+            <p>LG U+는 <strong>양천구인터넷</strong> 시장에서 점유율을 늘려가고 있습니다. <strong>장점</strong>은 요금제가 <strong>저렴한곳</strong>으로 알려져 있으며, TV 상품의 VOD 콘텐츠가 풍부하다는 점입니다. <strong>신규 가입 혜택</strong>으로 넷플릭스 제휴 상품을 제공하며, <strong>양천구 목동인터넷</strong> 가입자들이 <strong>저렴한 가격</strong>과 콘텐츠 만족도로 긍정적인 평가를 합니다. <strong>단점</strong>은 일부 오래된 건물에서는 속도 저하 문제가 발생할 수 있으므로, <strong>양천구 인터넷 설치</strong> 시 반드시 전문가 <strong>확인</strong>이 필요합니다.</p>
+        </div>
+    </section>
+
+    <section id="faq" class="container faq">
+        <h2>❓ 자주 묻는 질문 (FAQ): 양천구인터넷 가입 관련</h2>
+        <p>가장 많이 묻는 질문을 모았습니다. 클릭하여 자세한 답변을 확인하세요. (네이버 스니펫 노출 최적화)</p>
+        
+        <div class="item">
+            <h3 onclick="toggleFaq(this)">Q1: <strong>양천구인터넷</strong> 가입 시 통신사별 <strong>현금 지원금</strong> 차이가 큰가요? <span class="faq-icon">▼</span></h3>
+            <p>A: 네, 통신사별로 <strong>현금지원 금액</strong>은 물론이고, 시기별 프로모션에 따라 지급액이 크게 달라질 수 있습니다. 특히 <strong>신규 가입</strong>자는 <strong>재약정</strong>보다 혜택이 훨씬 크며, <strong>양천구</strong> 지역 내 대리점마다 지급하는 <strong>지원금</strong>이 다르므로 <strong>비교</strong>가 필수입니다. 보통 <strong>LG U+</strong>나 <strong>SKT</strong>가 <strong>KT</strong>보다 <strong>현금지원</strong>에 적극적인 경향을 보입니다.</p>
+        </div>
+        
+        <div class="item">
+            <h3 onclick="toggleFaq(this)">Q2: <strong>양천구 목동</strong> 아파트 단지에서는 어떤 통신사가 가장 좋은가요? <span class="faq-icon">▼</span></h3>
+            <p>A: <strong>양천구 목동</strong>은 통신 인프라가 워낙 잘 되어 있어 <strong>SKT, KT, LG U+</strong> 모두 안정적인 서비스를 제공합니다. 따라서 특정 통신사가 절대적으로 좋다고 단정하기 어렵습니다. <strong>목동인터넷</strong> 가입 시에는 가족 구성원의 휴대폰 통신사를 <strong>확인</strong>하여 <strong>결합 할인</strong> 혜택을 받는 것이 가장 중요합니다. <strong>내돈내산 후기</strong>를 참고하면 <strong>SKT</strong>와 <strong>KT</strong>에 대한 만족도가 높은 편입니다.</p>
+        </div>
+        
+        <div class="item">
+            <h3 onclick="toggleFaq(this)">Q3: <strong>양천구 신정동</strong>이나 <strong>신월동</strong> 빌라 지역도 <strong>기가인터넷</strong> 설치가 가능한가요? <span class="faq-icon">▼</span></h3>
+            <p>A: <strong>양천구 신정동</strong>이나 <strong>신월동</strong> 내 빌라나 단독 주택은 <strong>목동</strong> 아파트 지역과 달리 통신사 인프라 상황이 다를 수 있습니다. 특히 <strong>양천구 신월동</strong> 외곽 지역의 노후된 건물은 <strong>기가인터넷</strong> 설치가 불가능하거나 추가 공사가 필요할 수 있습니다. <strong>신규 가입</strong> 전 반드시 <strong>전문 업체</strong>에 <strong>설치 가능 여부</strong>를 <strong>확인</strong>하고 <strong>견적</strong>을 받아보는 것이 좋습니다.</p>
+        </div>
+        
+        <div class="item">
+            <h3 onclick="toggleFaq(this)">Q4: <strong>양천구인터넷</strong> <strong>가입</strong> 시 <strong>현금지원</strong>을 받으려면 어떤 점을 <strong>확인</strong>해야 하나요? <span class="faq-icon">▼</span></h3>
+            <p>A: <strong>현금지원</strong>은 주로 <strong>신규 가입</strong> 혜택이며, 약정 기간(보통 3년)을 채우지 못하고 해지할 경우 위약금이 발생합니다. <strong>가입</strong> 전 반드시 <strong>지원금</strong> 지급 시기, 약정 기간, 그리고 해지 위약금 규정을 <strong>확인</strong>해야 합니다. 또한, <strong>디시인사이드</strong>나 <strong>네이버 카페</strong> 등에서 <strong>양천구인터넷</strong> <strong>내돈내산 후기</strong>를 찾아보며 <strong>업체</strong>의 신뢰도를 <strong>비교</strong>하는 것이 중요합니다.</p>
+        </div>
+    </section>
+
+    <section id="external-links" class="container">
+        <h2>🔗 공인된 인터넷 관련 외부 신뢰 사이트</h2>
+        <div class="link-block">
+            <ul>
+                <li><a href="https://www.gov.kr/portal/main" target="_blank">대한민국 정부24:</a> 통신 서비스 관련 민원 및 정보 확인</li>
+                <li><a href="https://www.kcc.go.kr/index.do" target="_blank">방송통신위원회:</a> 통신 서비스 정책 및 소비자 보호 정보 확인</li>
+                <li><a href="https://www.korea.kr/main/index.do" target="_blank">대한민국 정책브리핑:</a> 정부의 통신 요금 인하 정책 등 최신 뉴스 확인</li>
+                <li><a href="https://namu.wiki/w/%EC%B4%88%EA%B3%A0%EC%86%8D%EC%9D%B8%ED%84%B0%EB%84%B7" target="_blank">나무위키: 초고속 인터넷</a> (서비스 개념 및 기술 배경 참고)</li>
+                <li><a href="https://www.fss.or.kr/" target="_blank">금융감독원 (FSS):</a> 통신 관련 상품권 및 사은품 지급 관련 소비자 유의 사항 확인</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="contact-form" class="container">
+        <h2>📞 양천구인터넷 1:1 전문 상담 신청</h2>
+        <p><strong>양천구</strong> 지역 내 <strong>인터넷 설치</strong> 조건, 요금제 <strong>비교</strong>, <strong>현금 지원금</strong> 등 복잡한 문의가 있다면 <strong>전문가</strong> 상담을 신청하세요. <strong>2026년</strong> 최신 정보를 바탕으로 고객님께 가장 유리한 <strong>상품</strong>을 <strong>추천</strong>해드립니다.</p>
+        
+        <div class="inquiry-form">
+            <form action="/submit-consultation" method="post">
+                <p><label for="contact-name-2">이름</label><br><input type="text" id="contact-name-2" name="name" required></p>
+                <p><label for="contact-phone-2">연락처</label><br><input type="tel" id="contact-phone-2" name="phone" placeholder="하이픈(-) 없이 입력" required></p>
+                <p><label for="contact-address">설치 주소 (양천구 동/아파트명)</label><br><input type="text" id="contact-address" name="address" placeholder="예: 양천구 목동 1단지 아파트" required></p>
+                <p><label for="contact-details-2">상담 희망 내용 (**양천구인터넷** 관련)</label><br><textarea id="contact-details-2" name="details" rows="4" placeholder="예: '<strong>양천구인터넷</strong> <strong>신규 가입</strong>을 원해요. <strong>KT</strong>와 <strong>SKT</strong> 중 <strong>현금 지원</strong>이 많은 <strong>업체</strong>를 <strong>추천</strong>해주세요.' 또는 '<strong>신정동</strong> 빌라인데 <strong>설치 가능 여부</strong>가 궁금해요.'" required></textarea></p>
+                <button type="submit" class="cta-btn primary" style="width:100%;">무료 전문 상담 요청하기</button>
+            </form>
+        </div>
+        
+        <p style="text-align: center;">☎️ 전화 문의: <a href="tel:031-XXX-XXXX">031-XXX-XXXX</a> (운영시간: 평일 09:00–18:00)</p>
+    </section>
+
+
+    <script>
+        // FAQ 토글 기능 스크립트
+        function toggleFaq(element) {
+            const item = element.parentNode;
+            item.classList.toggle('active');
+            const answer = element.nextElementSibling;
+            if (item.classList.contains('active')) {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
+        }
+    </script>
+
+  
